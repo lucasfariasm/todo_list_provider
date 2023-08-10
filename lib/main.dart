@@ -26,7 +26,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const TodosScreen(),
-      localizationsDelegates: const [GlobalMaterialLocalizations.delegate],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       supportedLocales: const [Locale('pt', 'BR')],
     );
   }
