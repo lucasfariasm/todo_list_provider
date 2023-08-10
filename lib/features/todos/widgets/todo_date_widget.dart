@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/models/todo_model.dart';
+import '../../../shared/widgets/texts/text_widget.dart';
 
 class TodoDateWidget extends StatelessWidget {
   final TodoModel todo;
@@ -10,9 +11,8 @@ class TodoDateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 12),
-      child: Text(
+      child: TextWidget(
         todo.date.toIso8601String(),
-        style: const TextStyle(color: Colors.white),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/models/todo_model.dart';
+import '../../../shared/widgets/texts/text_widget.dart';
 
 class TodoTitleAndDescriptionWidget extends StatelessWidget {
   final TodoModel todo;
@@ -12,18 +13,13 @@ class TodoTitleAndDescriptionWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          TextWidget(
             todo.title,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
+            cFontSize: 20,
           ),
           if (todo.description != null)
-            Text(
+            TextWidget(
               todo.description!,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
             ),
         ],
       ),
