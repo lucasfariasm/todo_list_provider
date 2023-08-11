@@ -7,7 +7,8 @@ import '../../models/todo_model.dart';
 import 'local_storage_service.dart';
 
 class TodosLocalStorageService {
-  final String todosKey = "todos";
+  final String todosKey = "todosKey";
+  final String doneTodosKey = "doneTodosKey";
   final LocalStorageService _localStorageService;
 
   TodosLocalStorageService(this._localStorageService);
@@ -52,6 +53,48 @@ class TodosLocalStorageService {
     } catch (error, st) {
       log(
         "Error loading todos",
+        error: error,
+        stackTrace: st,
+      );
+      return (defaultErrorMessage, null);
+    }
+  }
+
+  Future<String?> setDoneTodos(List<String> doneTodos) async {
+    try {
+      final String data = jsonEncode(doneTodos);
+
+      await _localStorageService.set(doneTodosKey, data);
+
+      return null;
+    } on LocalStorageException {
+      return "Erro ao salvar tarefas feitas.";
+    } catch (error, st) {
+      log(
+        "Error saving done todos",
+        error: error,
+        stackTrace: st,
+      );
+      return defaultErrorMessage;
+    }
+  }
+
+  Future<(String? error, List<String>? doneTodos)> getDoneTodos() async {
+    try {
+      final String? doneTodosJson =
+          await _localStorageService.get(doneTodosKey);
+
+      if (doneTodosJson != null) {
+        final doneTodos = (jsonDecode(doneTodosJson) as List).cast<String>();
+        return (null, doneTodos);
+      }
+
+      return (null, <String>[]);
+    } on LocalStorageException {
+      return ("Erro ao carregar tarefas feitas.", null);
+    } catch (error, st) {
+      log(
+        "Error loading done todos",
         error: error,
         stackTrace: st,
       );
