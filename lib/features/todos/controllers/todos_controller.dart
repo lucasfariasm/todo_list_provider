@@ -59,4 +59,31 @@ class TodosController extends ChangeNotifier {
   Future<String?> saveTodo() {
     return _todosLocalStorageService.setTodos(todos);
   }
+
+  bool isTodoChecked(String id) {
+    return doneTodos.indexWhere((checkedTodoId) => checkedTodoId == id) != -1;
+  }
+
+  Future<String?> checkTodo(String id) async {
+    if (!isTodoChecked(id)) {
+      doneTodos.add(id);
+    } else {
+      doneTodos.removeWhere((checkedTodoId) => checkedTodoId == id);
+    }
+
+    final String? error =
+        await _todosLocalStorageService.setDoneTodos(doneTodos);
+
+    if (error == null) {
+      notifyListeners();
+    }
+
+    if (isTodoChecked(id)) {
+      doneTodos.add(id);
+    } else {
+      doneTodos.removeWhere((checkedTodoId) => checkedTodoId == id);
+    }
+
+    return error;
+  }
 }
