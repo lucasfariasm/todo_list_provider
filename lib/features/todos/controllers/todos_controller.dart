@@ -43,4 +43,20 @@ class TodosController extends ChangeNotifier {
 
     return error;
   }
+
+  Future<String?> addTodos(TodoModel todo) async {
+    todos.add(todo);
+
+    final String? error = await saveTodo();
+
+    if (error == null) {
+      sortTodosByDate();
+    }
+
+    return error;
+  }
+
+  Future<String?> saveTodo() {
+    return _todosLocalStorageService.setTodos(todos);
+  }
 }
