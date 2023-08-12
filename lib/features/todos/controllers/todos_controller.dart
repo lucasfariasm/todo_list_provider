@@ -30,4 +30,17 @@ class TodosController extends ChangeNotifier {
     todos.sort((todoA, todoB) => todoA.date.compareTo(todoB.date));
     notifyListeners();
   }
+
+  Future<String?> loadDoneTodos() async {
+    final (String? error, List<String>? loadedDoneTodos) =
+        await _todosLocalStorageService.getDoneTodos();
+
+    if (error == null) {
+      doneTodos
+        ..clear()
+        ..addAll(loadedDoneTodos!);
+    }
+
+    return error;
+  }
 }
