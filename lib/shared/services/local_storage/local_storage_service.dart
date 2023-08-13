@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+// ignore: library_prefixes
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as Storage;
 
 import '../../errors/local_storage_exceptions.dart';
