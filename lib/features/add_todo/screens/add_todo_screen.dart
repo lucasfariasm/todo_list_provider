@@ -5,6 +5,7 @@ import 'package:todo_list_provider/shared/mixins/snack_bar_mixin.dart';
 import 'package:todo_list_provider/shared/models/todo_model.dart';
 import 'package:todo_list_provider/shared/widgets/texts/text_widget.dart';
 
+import '../widgets/date_text_input_widget.dart';
 import '../widgets/description_text_input_widget.dart';
 import '../widgets/title_text_input_widget.dart';
 
@@ -95,7 +96,16 @@ class _AddTodoScreenState extends State<AddTodoScreen> with SnackBarMixin {
                 descriptionTEC: _descriptionTEC,
                 descriptionFN: _descriptionFN,
                 todoDateFN: _todoDateFN,
-              )
+              ),
+              const SizedBox(height: 16),
+              DateTextInputWidget(
+                addTodo: _addTodo,
+                setDate: (DateTime date) {
+                  todoDate = date;
+                },
+                todoDateFN: _todoDateFN,
+                todoDateTEC: _todoDateTEC,
+              ),
             ],
           ),
         ),
