@@ -5,14 +5,12 @@ import 'package:todo_list_provider/shared/widgets/inputs/text_input_widget.dart'
 class DateTextInputWidget extends StatelessWidget {
   final TextEditingController todoDateTEC;
   final FocusNode todoDateFN;
-  final void Function() addTodo;
   final void Function(DateTime date) setDate;
 
   const DateTextInputWidget({
     Key? key,
     required this.todoDateTEC,
     required this.todoDateFN,
-    required this.addTodo,
     required this.setDate,
   }) : super(key: key);
 
@@ -28,7 +26,6 @@ class DateTextInputWidget extends StatelessWidget {
         }
         return null;
       },
-      onFieldSubmitted: (_) => addTodo(),
       textInputAction: TextInputAction.send,
       readOnly: true,
       onTap: () async {

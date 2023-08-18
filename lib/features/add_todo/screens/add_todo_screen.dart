@@ -99,13 +99,19 @@ class _AddTodoScreenState extends State<AddTodoScreen> with SnackBarMixin {
               ),
               const SizedBox(height: 16),
               DateTextInputWidget(
-                addTodo: _addTodo,
                 setDate: (DateTime date) {
                   todoDate = date;
                 },
                 todoDateFN: _todoDateFN,
                 todoDateTEC: _todoDateTEC,
               ),
+              const SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _addTodo,
+                child: const Text(
+                  'Adicionar tarefa',
+                ),
+              )
             ],
           ),
         ),
