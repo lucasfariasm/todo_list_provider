@@ -14,6 +14,7 @@ class TextInputWidget extends StatelessWidget {
   final int? minLines;
   final void Function()? onTap;
   final bool readOnly;
+  final TextInputAction textInputAction;
 
   const TextInputWidget({
     super.key,
@@ -28,6 +29,7 @@ class TextInputWidget extends StatelessWidget {
     this.minLines,
     this.onTap,
     this.readOnly = false,
+    this.textInputAction = TextInputAction.next,
   });
 
   @override
@@ -41,6 +43,7 @@ class TextInputWidget extends StatelessWidget {
         label: TextWidget(label),
         border: const OutlineInputBorder(),
       ),
+      textInputAction: textInputAction,
       textCapitalization: textCapitalization,
       validator: validator,
       onFieldSubmitted: onFieldSubmitted,

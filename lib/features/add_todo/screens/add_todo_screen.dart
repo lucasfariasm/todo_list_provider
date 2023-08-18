@@ -5,7 +5,8 @@ import 'package:todo_list_provider/shared/mixins/snack_bar_mixin.dart';
 import 'package:todo_list_provider/shared/models/todo_model.dart';
 import 'package:todo_list_provider/shared/widgets/texts/text_widget.dart';
 
-import '../../../shared/widgets/inputs/text_input_widget.dart';
+import '../widgets/description_text_input_widget.dart';
+import '../widgets/title_text_input_widget.dart';
 
 class AddTodoScreen extends StatefulWidget {
   const AddTodoScreen({super.key});
@@ -84,11 +85,17 @@ class _AddTodoScreenState extends State<AddTodoScreen> with SnackBarMixin {
           key: _formKey,
           child: Column(
             children: [
-              TextInputWidget(
-                controller: TextEditingController(),
-                focusNode: FocusNode(),
-                label: 'Título',
+              TitleTextInputWidget(
+                titleTEC: _titleTEC,
+                titleFN: _titleFN,
+                descriptionFN: _descriptionFN,
               ),
+              const SizedBox(height: 16),
+              DescriptionTextInputWidget(
+                descriptionTEC: _descriptionTEC,
+                descriptionFN: _descriptionFN,
+                todoDateFN: _todoDateFN,
+              )
             ],
           ),
         ),
