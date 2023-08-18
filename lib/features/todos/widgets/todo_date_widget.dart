@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_provider/shared/extensions/date_extension.dart';
 
 import '../../../shared/models/todo_model.dart';
 import '../../../shared/widgets/texts/text_widget.dart';
@@ -12,7 +13,7 @@ class TodoDateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 12),
       child: TextWidget(
-        todo.date.toIso8601String(),
+        todo.date.formatDate,
       ),
     );
   }

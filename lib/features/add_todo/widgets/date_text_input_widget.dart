@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:todo_list_provider/shared/extensions/date_extension.dart';
 import 'package:todo_list_provider/shared/widgets/inputs/text_input_widget.dart';
 
 class DateTextInputWidget extends StatelessWidget {
@@ -41,7 +42,7 @@ class DateTextInputWidget extends StatelessWidget {
 
         if (date != null) {
           setDate(date);
-          stringDate = date.toIso8601String();
+          stringDate = date.formatDate;
         }
 
         todoDateTEC.text = stringDate;
